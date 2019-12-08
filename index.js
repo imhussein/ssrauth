@@ -13,10 +13,14 @@
 // REDUX SETUP ON CLIE
 
 let axiosClientnstance = axios.create({
-  baseURL: "/api"
+  baseURL: "/api" // express will forward to apimainutl/api // Proxy Server Will Attach Cookie From Broser Request Authmatice
 });
 
 thunk.withExtraArgument();
+
+let axiosClientInstance = axios.create({
+  baseURL: "apimainurl" // In Server And Initial Page Load We Have To Pass Express Request To Create Store On Server Setup Object and Get Cookie From It And It Axios Custom Server Instance
+});
 
 app.use("/api", proxy("http://react-ssr-api.herokuapp.com"));
 
